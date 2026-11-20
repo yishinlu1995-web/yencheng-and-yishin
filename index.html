@@ -325,21 +325,27 @@ input:focus,textarea:focus{outline:none;border-color:var(--marker)}
 .collab-hint small{font-size:12.5px;color:var(--ink-soft)}
 .note .why{margin-top:4px;font-size:13px;color:var(--ink-soft);line-height:1.7}
 
-/* wall: 便條 */
-.wall{columns:2 250px;column-gap:22px;margin-top:40px;padding-top:12px}
+/* wall: 藍色小卡 */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:26px 20px;align-items:start;margin-top:40px;padding-top:12px}
 .note{
-  break-inside:avoid;display:inline-block;width:100%;position:relative;margin:0 0 30px;padding:26px 20px 16px;
-  background:var(--paper-light);box-shadow:0 12px 22px -16px rgba(40,30,10,.55);
+  position:relative;margin:0;padding:24px 18px 14px;
+  background:var(--marker);color:#fff;border-radius:3px;
+  box-shadow:0 12px 22px -14px rgba(20,30,80,.6);
 }
+.note:before{content:"";position:absolute;inset:6px;border:1px dashed rgba(255,255,255,.35);border-radius:2px;pointer-events:none}
 .note:nth-child(4n+1){transform:rotate(-1.2deg)}
-.note:nth-child(4n+2){transform:rotate(.9deg);background:#e9eef9}
-.note:nth-child(4n+3){transform:rotate(-.5deg)}
-.note:nth-child(4n){transform:rotate(1.4deg);background:#f3eee2}
-.note .tape{width:70px;margin-left:-35px;height:22px;top:-10px}
-.note p{font-family:var(--script);font-size:23px;line-height:1.3;white-space:pre-wrap}
-.note .song{margin-top:10px;font-family:var(--script);font-size:20px;color:var(--marker)}
-.note .song a{color:var(--marker)}
-.note .from{margin-top:8px;text-align:right;font-family:var(--hand);font-size:22px;color:var(--ink-soft)}
+.note:nth-child(4n+2){transform:rotate(.9deg);background:#2c57d6}
+.note:nth-child(4n+3){transform:rotate(-.5deg);background:#1b3da6}
+.note:nth-child(4n){transform:rotate(1.4deg);background:#3463e0}
+.note .tape{width:64px;margin-left:-32px;height:20px;top:-9px}
+.note p{font-family:var(--zh);font-size:14.5px;line-height:1.75;white-space:pre-wrap;padding-right:22px;word-break:break-word}
+.note .song{margin-top:8px;font-family:var(--zh);font-size:13px;color:#d6e2ff}
+.note .song a{color:#fff}
+.note .from{margin-top:8px;text-align:right;font-family:var(--script);font-size:20px;color:rgba(255,255,255,.9)}
+.note .nd{position:absolute;right:10px;top:12px;width:24px;height:24px;color:#fff;opacity:.95}
+.note .nd svg{width:100%;height:100%;display:block;filter:url(#rough)}
+.note .nd2{position:absolute;left:12px;bottom:12px;width:16px;height:16px;color:#ffd84a}
+.note .nd2 svg{width:100%;height:100%;display:block}
 .empty{text-align:center;font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-top:30px}
 
 /* playlist: 卡帶 */
@@ -887,12 +893,24 @@ async function loadBlessings(){
 }
 const safeLink = u => { try { const x = new URL(u); return x.protocol === "https:" ? x.href : ""; } catch { return ""; } };
 
+const DOODLES = [
+  '<path d="M12 20c-6-4-9-8-9-11a4.5 4.5 0 0 1 9-2 4.5 4.5 0 0 1 9 2c0 3-3 7-9 11z"/>',
+  '<path d="M12 2c1 6 3 8 10 10-7 2-9 4-10 10-1-6-3-8-10-10 7-2 9-4 10-10z"/>',
+  '<circle cx="12" cy="12" r="3"/><circle cx="12" cy="5" r="3"/><circle cx="12" cy="19" r="3"/><circle cx="5" cy="12" r="3"/><circle cx="19" cy="12" r="3"/>',
+  '<path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+  '<circle cx="12" cy="12" r="9"/><path d="M8.5 10v.5M15.5 10v.5M8 14.5c2 2.5 6 2.5 8 0"/>',
+  '<path d="M5 4h6c0 4-1.5 6-3 6S5 8 5 4zM8 10v8M5.5 18h5M13 4h6c0 4-1.5 6-3 6s-3-2-3-6zM16 10v8M13.5 18h5"/>'
+];
+const svgDoodle = (d, fill) => `<svg viewBox="0 0 24 24" fill="${fill ? "currentColor" : "none"}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+
 function renderWall(list){
   const wall = $("wall"); wall.innerHTML = "";
   $("wallEmpty").hidden = list.length > 0;
   for (const b of list) {
     const n = document.createElement("article"); n.className = "note";
-    n.innerHTML = '<div class="tape"></div>';
+    const k = (b.name || "").length + (b.message || "").length;
+    n.innerHTML = '<div class="tape"></div><div class="nd">' + svgDoodle(DOODLES[k % DOODLES.length], false) + '</div>'
+      + '<div class="nd2">' + svgDoodle(DOODLES[(k + 1) % 2], true) + '</div>';
     const p = document.createElement("p"); p.textContent = b.message; n.appendChild(p);
     if (b.song) {
       const s = document.createElement("div"); s.className = "song"; s.append("♪ ");
