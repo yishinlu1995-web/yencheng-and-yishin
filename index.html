@@ -72,13 +72,13 @@ body.env-lock{overflow:hidden}
 .env-flap{left:0;right:0;top:0;height:54%;z-index:4;background:#c4d4e6;clip-path:polygon(0 0,100% 0,50% 100%);
   transform-origin:top center;transition:transform .8s cubic-bezier(.5,0,.3,1), z-index 0s .4s;
   filter:drop-shadow(0 2px 2px rgba(40,60,90,.18))}
-.letter{left:9%;right:9%;top:6%;height:88%;z-index:1;background:#f6f0e4;padding:8% 6% 6% 26%;
-  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;
+.letter{left:9%;right:9%;top:6%;height:88%;z-index:1;background:#f6f0e4;padding:0 6%;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding-top:15%;
   box-shadow:0 1px 2px rgba(0,0,0,.08);transition:transform 1s cubic-bezier(.25,1,.35,1) .65s;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/><feColorMatrix values='0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .2  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")}
 .l-line{font-family:var(--hand);color:var(--marker);filter:url(#rough);font-size:clamp(28px,8.2vw,48px);line-height:.95;transform:rotate(-2deg)}
 .l-line em{font-style:normal}
-.l-sm{font-family:var(--script);color:var(--ink);filter:none;font-size:clamp(17px,4.6vw,24px);margin-top:8px;transform:none}
+.l-sm{font-family:var(--script);color:var(--ink);font-size:clamp(22px,6vw,30px);line-height:1.1;margin:0}
 .l-sign{margin-top:12px;font-family:var(--script);font-size:clamp(15px,4vw,20px);color:var(--ink-soft);line-height:1.3}
 .l-sign span{font-family:var(--zh);font-size:.62em;letter-spacing:.3em;color:#8a8275}
 .env-photo{left:30%;top:12%;width:36%;z-index:2;margin:0;background:#fbf8f2;padding:6px 6px 22px;box-shadow:0 10px 18px -10px rgba(0,0,0,.45);
@@ -604,8 +604,6 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
       <span class="env-back"></span>
       <figure class="env-photo"><img src="photos/hero.jpg" alt=""></figure>
       <div class="letter">
-        <p class="l-line">bless our</p>
-        <p class="l-line"><em>journey,</em></p>
         <p class="l-line l-sm">together &amp; always ♡</p>
         <p class="l-sign">Yencheng &amp; Yishin<br><span>15 · 01 · 2027</span></p>
       </div>
