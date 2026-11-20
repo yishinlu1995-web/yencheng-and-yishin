@@ -306,6 +306,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--marker)}
 .hint{font-size:13px;color:var(--ink-soft);margin-top:14px}
 .collab-hint{margin-top:18px;padding:12px 14px;background:#e9eef9;font-size:15px;line-height:1.8}
 .collab-hint a{color:var(--marker);font-weight:400;text-decoration:underline;text-underline-offset:4px}
+.add-song{margin-top:22px}
+.add-song .btn-ink{display:inline-block;text-decoration:none}
 .collab-hint small{font-size:12.5px;color:var(--ink-soft)}
 .note .why{margin-top:4px;font-size:13px;color:var(--ink-soft);line-height:1.7}
 
@@ -668,16 +670,7 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
       <label for="bMsg">祝福的話</label>
       <textarea id="bMsg" name="message" required maxlength="600" placeholder="write us something…"></textarea>
 
-      <label for="bSong">送我們一首歌（選填，會加進祝福歌單）</label>
-      <div class="row">
-        <input type="text" id="bSong" name="song" maxlength="80" placeholder="歌名 – 歌手">
-        <input type="url" id="bLink" name="link" maxlength="300" placeholder="Spotify 連結（選填）">
-      </div>
-
-      <label for="bWhy">為什麼選這首歌？（選填）</label>
-      <input type="text" id="bWhy" name="why" maxlength="300" placeholder="這首歌讓你想到我們的什麼？">
-
-      <p class="collab-hint" id="collabHint" hidden>想直接把歌放進歌單？<a id="collabInline" target="_blank" rel="noopener">打開歌單，自己加歌 →</a><br><small>需要 Spotify 帳號；也歡迎在上面寫下為什麼選這首 🎶</small></p>
+      <p class="collab-hint">想送我們一首歌嗎？<a href="#playlist">到下方的祝福歌單，直接把歌加進去 ↓</a></p>
 
       <div class="submit-row">
         <button class="btn-ink" type="submit">貼上祝福</button>
@@ -727,9 +720,9 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
     <div class="spotify-box" id="spotifyBox">
       <div class="spotify-placeholder">the playlist is warming up — leave us a song above ♪</div>
     </div>
-    <div class="center" id="collabWrap" hidden>
-      <a class="btn-hand" id="collabLink" target="_blank" rel="noopener">打開歌單，自己加歌 →</a>
-      <p class="hint">需要 Spotify 帳號；連結開放期間有限。</p>
+    <div class="center add-song">
+      <a class="btn-ink" id="collabLink" href="https://open.spotify.com/playlist/5sptLeIVDfyPrQ49lpKp61" target="_blank" rel="noopener">打開歌單，加入你的歌 →</a>
+      <p class="hint">在 Spotify 打開歌單後，把你想送我們的歌加進來就好 🎶</p>
     </div>
     <p class="center script" style="font-size:22px;color:var(--ink-soft);margin-top:18px">every song you send us goes on the record.</p>
   </div>
@@ -814,8 +807,7 @@ tick(); setInterval(tick, 30000);
 
 function showCollab(url){
   if (!/^https:\/\/open\.spotify\.com\//.test(url || "")) return;
-  $("collabLink").href = url; $("collabWrap").hidden = false;
-  $("collabInline").href = url; $("collabHint").hidden = false;
+  $("collabLink").href = url;
 }
 showCollab(CONFIG.spotifyCollabUrl);
 if (!DEMO) fetch(CONFIG.scriptUrl + "?action=config").then(r => r.json()).then(c => showCollab(c && c.collabUrl)).catch(() => {});
