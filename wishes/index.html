@@ -72,23 +72,23 @@ body.env-lock{overflow:hidden}
 .env-flap{left:0;right:0;top:0;height:54%;z-index:4;background:#c4d4e6;clip-path:polygon(0 0,100% 0,50% 100%);
   transform-origin:top center;transition:transform .8s cubic-bezier(.5,0,.3,1), z-index 0s .4s;
   filter:drop-shadow(0 2px 2px rgba(40,60,90,.18))}
-.letter{left:9%;right:9%;top:6%;height:88%;z-index:1;background:#f6f0e4;padding:9% 8% 7%;
+.letter{left:9%;right:9%;top:6%;height:88%;z-index:1;background:#f6f0e4;padding:8% 6% 6% 26%;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;
   box-shadow:0 1px 2px rgba(0,0,0,.08);transition:transform 1s cubic-bezier(.25,1,.35,1) .65s;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/><feColorMatrix values='0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .2  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")}
-.l-line{font-family:"Cormorant Garamond",serif;font-weight:500;color:#1f1c18;font-size:clamp(30px,8.4vw,46px);line-height:.98;letter-spacing:-.02em}
-.l-line em{font-style:italic;font-weight:400}
-.l-sm{font-size:clamp(19px,5vw,25px);margin-top:10px;letter-spacing:0}
-.l-sign{margin-top:auto;font-family:"Cormorant Garamond",serif;font-size:clamp(13px,3.4vw,16px);letter-spacing:.06em;color:#3a352e;line-height:1.5}
-.l-sign span{font-size:.85em;letter-spacing:.3em;color:#7a7164}
-.env-photo{left:30%;top:12%;width:40%;z-index:2;margin:0;background:#fbf8f2;padding:6px 6px 22px;box-shadow:0 10px 18px -10px rgba(0,0,0,.45);
+.l-line{font-family:var(--hand);color:var(--marker);filter:url(#rough);font-size:clamp(28px,8.2vw,48px);line-height:.95;transform:rotate(-2deg)}
+.l-line em{font-style:normal}
+.l-sm{font-family:var(--script);color:var(--ink);filter:none;font-size:clamp(17px,4.6vw,24px);margin-top:8px;transform:none}
+.l-sign{margin-top:12px;font-family:var(--script);font-size:clamp(15px,4vw,20px);color:var(--ink-soft);line-height:1.3}
+.l-sign span{font-family:var(--zh);font-size:.62em;letter-spacing:.3em;color:#8a8275}
+.env-photo{left:30%;top:12%;width:36%;z-index:2;margin:0;background:#fbf8f2;padding:6px 6px 22px;box-shadow:0 10px 18px -10px rgba(0,0,0,.45);
   transform:translate(0,0) rotate(0);transition:transform 1s cubic-bezier(.25,1,.35,1) .9s}
 .env-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% 78%}
 .envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
-.envelope.open .letter{transform:translate(14%,-70%) rotate(2.5deg)}
-.envelope.open .env-photo{transform:translate(-84%,-84%) rotate(-8deg)}
+.envelope.open .letter{transform:translate(14%,-80%) rotate(2.5deg)}
+.envelope.open .env-photo{transform:translate(-92%,-80%) rotate(-8deg)}
 .env-cta{border:0;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:#4a443a;transition:opacity .4s}
-.env-cta .c1{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:22px;letter-spacing:.02em;border-bottom:1px solid currentColor;line-height:1.15}
+.env-cta .c1{font-family:var(--script);font-size:25px;line-height:1.15;border-bottom:1.5px solid currentColor}
 .env-cta .c2{font-family:var(--zh);font-size:12px;letter-spacing:.3em;margin-top:6px;color:#7a7164}
 .env-cta.pulse .c1{animation:ctaPulse 1.8s ease-in-out infinite}
 @keyframes ctaPulse{0%,100%{opacity:.55}50%{opacity:1}}
@@ -606,7 +606,7 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
       <div class="letter">
         <p class="l-line">bless our</p>
         <p class="l-line"><em>journey,</em></p>
-        <p class="l-line l-sm">together &amp; <em>always.</em></p>
+        <p class="l-line l-sm">together &amp; always ♡</p>
         <p class="l-sign">Yencheng &amp; Yishin<br><span>15 · 01 · 2027</span></p>
       </div>
       <span class="env-front"><svg class="emboss" viewBox="-30 -30 60 60" aria-hidden="true"><g><ellipse cx="0" cy="-13" rx="6.5" ry="12" transform="rotate(0)"/><ellipse cx="0" cy="-13" rx="6.5" ry="12" transform="rotate(60)"/><ellipse cx="0" cy="-13" rx="6.5" ry="12" transform="rotate(120)"/><ellipse cx="0" cy="-13" rx="6.5" ry="12" transform="rotate(180)"/><ellipse cx="0" cy="-13" rx="6.5" ry="12" transform="rotate(240)"/><ellipse cx="0" cy="-13" rx="6.5" ry="12" transform="rotate(300)"/><circle r="4"/></g></svg></span>
