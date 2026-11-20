@@ -207,6 +207,15 @@ section{padding:62px 0;position:relative}
   .sig-label{font-size:9px;white-space:nowrap;letter-spacing:0}
 }
 
+/* plus-one note */
+.plus-one{position:relative;max-width:560px;margin:0 auto 34px;padding:30px 28px 22px;background:#e9eef9;
+  box-shadow:0 14px 26px -18px rgba(40,30,10,.5);transform:rotate(-.8deg);text-align:center}
+.plus-one .tape{top:-12px}
+.plus-one .po-title{font-size:30px;line-height:1;margin-bottom:12px}
+.plus-one p{font-size:15px;line-height:1.95}
+.plus-one p+p{margin-top:8px}
+.plus-one strong{color:var(--marker);font-weight:400;border-bottom:1.5px solid var(--marker)}
+
 /* polaroids */
 .polaroids{display:flex;justify-content:center;gap:22px;margin:44px 0 6px;flex-wrap:wrap}
 .polaroid{background:#fbfaf6;padding:10px 10px 0;width:210px;box-shadow:0 14px 24px -16px rgba(40,30,10,.6);position:relative}
@@ -603,6 +612,12 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
 <section id="rsvp">
   <div class="wrap">
     <div class="sec-title"><svg class="sec-icon"><use href="#ic-envelope"/></svg><h2 class="marker">will you come?</h2><span class="zh">回覆出席</span></div>
+    <aside class="plus-one">
+      <div class="tape"></div>
+      <p class="po-title marker">a little note</p>
+      <p>因為餐廳的座位有限，這次想請大家盡量<strong>不要攜伴</strong>參加聚餐。未來有機會，我們會再舉辦和大家一起同樂的典禮！</p>
+      <p>如果這次需要攜伴，非常歡迎一起來參加<strong>登記與拍照</strong>，或是在下方留言送上祝福。我們心中充滿感謝 ❤️</p>
+    </aside>
     <form class="notepaper" id="rsvpForm">
       <label for="rName">你的名字</label>
       <input type="text" id="rName" name="name" required maxlength="40" placeholder="讓我們知道你是誰">
@@ -633,6 +648,7 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
         <button class="btn-ink" type="submit">送出回覆</button>
         <span class="msg" id="rsvpMsg" role="status"></span>
       </div>
+      <p class="hint">攜伴的朋友歡迎參加登記與拍照；聚餐座位有限，請盡量一人出席，謝謝體諒 🤍</p>
       <p class="hint" id="rsvpDeadline"></p>
     </form>
   </div>
