@@ -146,6 +146,31 @@ section{padding:62px 0;position:relative}
 .schedule p{font-size:14px;color:var(--ink-soft)}
 .schedule li.hi time,.schedule li.hi h3{color:var(--marker)}
 
+/* route: 蜿蜒路線行程 */
+.route-date{text-align:center;font-size:30px;line-height:1;margin:-10px 0 20px;transform:rotate(-1deg)}
+.route{position:relative;max-width:600px;margin:0 auto}
+.route-line{position:absolute;inset:0;width:100%;height:calc(100% - 30px);filter:url(#rough);pointer-events:none}
+.route-line path{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.route ol{list-style:none;position:relative}
+.route li{height:170px;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.route .pic{display:flex;justify-content:center}
+.route .big-ic{width:104px;height:104px;background:var(--paper);border-radius:50%;padding:8px;filter:url(#rough)}
+.route li.r .pic{order:2}
+.route li.l .txt{padding-left:6px}
+.route li.r .txt{text-align:right;padding-right:6px}
+.route time{display:block;font-size:30px;line-height:1}
+.route h3{font-family:var(--script);font-size:28px;font-weight:600;line-height:1.15;margin-top:4px}
+.route p{font-size:14px;color:var(--ink-soft);line-height:1.6}
+.route li.hi h3{color:var(--marker)}
+.route-end{text-align:center;font-size:30px;height:30px;line-height:30px;margin-left:-0%}
+@media (max-width:620px){
+  .route li{height:150px}
+  .route .big-ic{width:80px;height:80px;padding:6px}
+  .route time{font-size:25px}
+  .route h3{font-size:23px}
+  .route p{font-size:13px}
+}
+
 /* polaroids */
 .polaroids{display:flex;justify-content:center;gap:22px;margin:44px 0 6px;flex-wrap:wrap}
 .polaroid{background:#fbfaf6;padding:10px 10px 0;width:210px;box-shadow:0 14px 24px -16px rgba(40,30,10,.6);position:relative}
@@ -417,14 +442,36 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
 
 <section id="day">
   <div class="wrap">
-    <div class="sec-title"><h2 class="marker">the day</h2><span class="zh">當天行程 · 2027.01.15（五）</span></div>
-    <ol class="schedule">
-      <li><svg class="icon ic"><use href="#ic-office"/></svg><time>9:30 – 10:00</time><div><h3>Meet up at the registration office</h3><p>大安戶政事務所集合</p></div></li>
-      <li class="hi"><svg class="icon ic"><use href="#ic-sign"/></svg><time>10:00 – 11:00</time><div><h3>We sign the papers!</h3><p>辦理登記</p></div></li>
-      <li><svg class="icon ic"><use href="#ic-camera"/></svg><time>11:00 – 11:40</time><div><h3>Photos together</h3><p>戶政事務所拍攝</p></div></li>
-      <li><svg class="icon ic"><use href="#ic-walk"/></svg><time>11:40 – 12:00</time><div><h3>A little walk to lunch</h3><p>走路前往初魚鮨</p></div></li>
-      <li class="hi"><svg class="icon ic"><use href="#ic-cheers"/></svg><time>12:00 – 15:00</time><div><h3>Long lunch &amp; good company</h3><p>初魚鮨用餐</p></div></li>
-    </ol>
+    <div class="sec-title"><h2 class="marker">the day</h2><span class="zh">當天行程</span></div>
+    <div class="route-date marker">Friday · 15 Jan 2027</div>
+    <div class="route">
+      <svg class="route-line" viewBox="0 0 100 500" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M50 0 C46 22,25 22,25 50 C25 100,75 100,75 150 C75 200,25 200,25 250 C25 300,75 300,75 350 C75 400,25 400,25 450 C25 478,40 486,50 494"/>
+      </svg>
+      <ol>
+      <li class="l">
+        <div class="pic"><svg class="big-ic"><use href="#ic-office"/></svg></div>
+        <div class="txt"><time class="marker">9:30 am</time><h3>Meet up</h3><p>在大安戶政事務所集合</p></div>
+      </li>
+      <li class="r hi">
+        <div class="pic"><svg class="big-ic"><use href="#ic-sign"/></svg></div>
+        <div class="txt"><time class="marker">10:00 am</time><h3>We sign the papers!</h3><p>辦理登記</p></div>
+      </li>
+      <li class="l">
+        <div class="pic"><svg class="big-ic"><use href="#ic-camera"/></svg></div>
+        <div class="txt"><time class="marker">11:00 am</time><h3>Photos together</h3><p>在戶政事務所拍照</p></div>
+      </li>
+      <li class="r">
+        <div class="pic"><svg class="big-ic"><use href="#ic-walk"/></svg></div>
+        <div class="txt"><time class="marker">11:40 am</time><h3>A little walk</h3><p>一起散步到初魚鮨</p></div>
+      </li>
+      <li class="l hi">
+        <div class="pic"><svg class="big-ic"><use href="#ic-cheers"/></svg></div>
+        <div class="txt"><time class="marker">12:00 pm</time><h3>Long lunch</h3><p>初魚鮨用餐，慢慢吃、慢慢聊</p></div>
+      </li>
+      </ol>
+      <div class="route-end marker">♡</div>
+    </div>
   </div>
 </section>
 
