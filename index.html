@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yencheng & Yishin · 15 Jan 2027</title>
 <meta name="description" content="We're getting married! Join us on 15 Jan 2027 in Taipei.">
@@ -445,7 +446,7 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
     <a href="#day">the day</a>
     <a href="#where">where</a>
     <a href="#rsvp">rsvp</a>
-    <a href="#notes">notes</a>
+    <a href="#notes">bless us</a>
     <a href="#playlist">playlist</a>
   </div>
 </nav>
@@ -841,13 +842,14 @@ $("footNames").textContent = `${CONFIG.nameA} & ${CONFIG.nameB}`;
 document.title = `${CONFIG.nameA} & ${CONFIG.nameB} · 15 Jan 2027`;
 $("introZh").replaceChildren(...paras(CONFIG.introZh));
 for (const k of ["A","B"]) {
+  if (!$("place"+k+"Name")) continue;
   const p = CONFIG["place"+k];
   $("place"+k+"En").textContent = p.en;
   $("place"+k+"Name").textContent = p.name;
   $("place"+k+"Addr").textContent = p.addr;
   $("place"+k+"Map").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(p.mapQuery || p.name);
 }
-if (CONFIG.rsvpDeadline) $("rsvpDeadline").innerHTML = `請在 <strong>${CONFIG.rsvpDeadline}</strong> 前回覆，我們要跟餐廳訂位，謝謝你 🙏`;
+if (CONFIG.rsvpDeadline && $("rsvpDeadline")) $("rsvpDeadline").innerHTML = `請在 <strong>${CONFIG.rsvpDeadline}</strong> 前回覆，我們要跟餐廳訂位，謝謝你 🙏`;
 if (DEMO) $("demoBanner").hidden = false;
 
 if (CONFIG.heroPhoto) {
@@ -966,7 +968,8 @@ async function refreshWall(){
 refreshWall();
 
 function bindForm(formId, msgId, type, okText, after){
-  const form = $(formId), msg = $(msgId), btn = form.querySelector("button");
+  const form = $(formId); if (!form) return;
+  const msg = $(msgId), btn = form.querySelector("button");
   form.addEventListener("submit", async e => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
