@@ -214,6 +214,8 @@ section{padding:62px 0;position:relative}
 .plus-one .po-title{font-size:30px;line-height:1;margin-bottom:12px}
 .plus-one p{font-size:15px;line-height:1.95}
 .plus-one p+p{margin-top:8px}
+.plus-one .po-deadline{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(33,72,192,.4)}
+#rsvpDeadline strong{color:var(--marker);font-weight:400}
 .plus-one strong{color:var(--marker);font-weight:400;border-bottom:1.5px solid var(--marker)}
 
 /* polaroids */
@@ -617,6 +619,7 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
       <p class="po-title marker">a little note</p>
       <p>因為餐廳的座位有限，這次想請大家盡量<strong>不要攜伴</strong>參加聚餐。未來有機會，我們會再舉辦和大家一起同樂的典禮！</p>
       <p>如果這次需要攜伴，非常歡迎一起來參加<strong>登記與拍照</strong>，或是在下方留言送上祝福。我們心中充滿感謝 ❤️</p>
+      <p class="po-deadline">請在 <strong>12/12（六）</strong>前回覆，我們要跟餐廳訂位 🙏</p>
     </aside>
     <form class="notepaper" id="rsvpForm">
       <label for="rName">你的名字</label>
@@ -752,7 +755,7 @@ const CONFIG = {
   placeA: { en: "Registration Office", name: "臺北市大安區戶政事務所", addr: "", mapQuery: "臺北市大安區戶政事務所" },
   placeB: { en: "Lunch spot", name: "初魚鮨 泰順店", addr: "臺北市大安區泰順街 2-2 號", mapQuery: "初魚鮨 泰順店 臺北市大安區泰順街2-2號" },
 
-  rsvpDeadline: "2026/12/31",
+  rsvpDeadline: "12/12（六）",
 
   spotifyPlaylistUrl: "https://open.spotify.com/playlist/5sptLeIVDfyPrQ49lpKp61",
   spotifyCollabUrl: "",     // 協作邀請連結（7 天效期），不用就留空
@@ -778,7 +781,7 @@ for (const k of ["A","B"]) {
   $("place"+k+"Addr").textContent = p.addr;
   $("place"+k+"Map").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(p.mapQuery || p.name);
 }
-if (CONFIG.rsvpDeadline) $("rsvpDeadline").textContent = `請在 ${CONFIG.rsvpDeadline} 前回覆，方便我們跟餐廳確認人數。`;
+if (CONFIG.rsvpDeadline) $("rsvpDeadline").innerHTML = `請在 <strong>${CONFIG.rsvpDeadline}</strong> 前回覆，我們要跟餐廳訂位，謝謝你 🙏`;
 if (DEMO) $("demoBanner").hidden = false;
 
 if (CONFIG.heroPhoto) {
