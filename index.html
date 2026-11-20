@@ -121,7 +121,17 @@ section{padding:62px 0;position:relative}
 .story-text p{font-size:16px;line-height:2.05}
 .story-text p+p{margin-top:18px}
 .story-text p{text-wrap:pretty}
-@media (max-width:620px){.story-text p{font-size:14.5px;line-height:2}}
+@media (max-width:620px){
+  .wrap{padding:0 16px}
+  .story-text p{font-size:14px;line-height:2}
+  .intro .zh{font-size:14.5px}
+  .c-zh p{font-size:14px}
+  .plus-one{padding:28px 18px 20px}
+  .plus-one p{font-size:14px}
+  .sheet{padding:38px 14px 44px}
+}
+p{text-wrap:pretty}
+.nw{white-space:nowrap}
 .milestones{list-style:none;margin:44px auto 0;max-width:560px;position:relative}
 .milestones:before{
   content:"";position:absolute;left:113px;top:12px;bottom:12px;width:2px;
@@ -819,6 +829,29 @@ function showCollab(url){
 showCollab(CONFIG.spotifyCollabUrl);
 if (!DEMO) fetch(CONFIG.scriptUrl + "?action=config").then(r => r.json()).then(c => showCollab(c && c.collabUrl)).catch(() => {});
 
+/* ----- 避免手機上最後一行只剩一個字 ----- */
+function noWidows(root){
+  const sel = ".story-text p, .intro .zh p, .c-zh p, .plus-one p, .milestones p, .route p, .hint, .walk";
+  root.querySelectorAll(sel).forEach(el => {
+    const nodes = [...el.childNodes];
+    nodes.forEach((n, i) => {
+      if (n.nodeType !== 3) return;
+      const next = nodes[i + 1];
+      const endsLine = !next || (next.nodeName === "BR");
+      if (!endsLine) return;
+      const t = n.textContent.replace(/\s+$/, "");
+      const chars = [...t];
+      if (chars.length < 8) return;
+      const k = 4;
+      const span = document.createElement("span");
+      span.className = "nw";
+      span.textContent = chars.slice(-k).join("");
+      n.textContent = chars.slice(0, -k).join("");
+      n.after(span);
+    });
+  });
+}
+
 /* ----- 資料存取 ----- */
 const LS_KEY = "regday-blessings";
 const demoLoad = () => { try { return JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch { return []; } };
@@ -877,6 +910,7 @@ function bindForm(formId, msgId, type, okText, after){
     finally { btn.disabled = false; }
   });
 }
+noWidows(document);
 bindForm("rsvpForm", "rsvpMsg", "rsvp", "收到了，謝謝你！1/15 見 ♡");
 bindForm("blessForm", "blessMsg", "blessing", "祝福貼上了，謝謝你 ♡", data => {
   if (DEMO) { refreshWall(); return; }
