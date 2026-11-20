@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yencheng & Yishin · 15 Jan 2027</title>
+<meta name="description" content="We're getting married! Join us on 15 Jan 2027 in Taipei.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Caveat:wght@400;600&family=Huninn&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   ✏️  文字內容都在最下方 <script> 的 CONFIG 裡
+   ========================================================= */
+:root{
+  --paper:#ebe8e1;
+  --paper-light:#f5f3ee;
+  --ink:#24231f;
+  --ink-soft:#66625a;
+  --marker:#2148c0;      /* 主色：鈷藍麥克筆 */
+  --marker-dark:#163391;
+  --tape:rgba(214,205,170,.72);
+  --hand:"Covered By Your Grace","Huninn",cursive;
+  --script:"Caveat","Huninn",cursive;
+  --zh:"Huninn","Caveat",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--zh);
+  color:var(--ink);
+  background-color:var(--paper);
+  /* 紙張顆粒 */
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .2  0 0 0 0 .18  0 0 0 0 .12  0 0 0 .13 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+.marker{font-family:var(--hand);color:var(--marker);filter:url(#rough);font-weight:400}
+.script{font-family:var(--script)}
+.zh{font-family:var(--zh);color:var(--ink-soft)}
+.svg-defs{position:absolute;width:0;height:0}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:30;background:rgba(235,232,225,.9);backdrop-filter:blur(4px)}
+nav .wrap{display:flex;gap:20px;justify-content:center;overflow-x:auto;padding:10px 18px;scrollbar-width:none}
+nav a{font-family:var(--script);font-size:21px;text-decoration:none;white-space:nowrap;color:var(--ink)}
+nav a:hover{color:var(--marker);text-decoration:underline wavy var(--marker) 1px;text-underline-offset:5px}
+nav:after{content:"";display:block;height:6px;background:
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='6'><path d='M0 3 Q15 0 30 3 T60 3 T90 3 T120 3' fill='none' stroke='%2324231f' stroke-opacity='.35' stroke-width='1'/></svg>") repeat-x}
+
+/* ---------- hero : 摺過的紙 ---------- */
+.hero{padding:44px 0 30px}
+.sheet{
+  position:relative;background:var(--paper-light);
+  padding:46px 34px 52px;
+  box-shadow:0 1px 0 rgba(0,0,0,.05),0 22px 40px -26px rgba(40,30,10,.45);
+  transform:rotate(-.4deg);
+}
+.sheet:before{ /* 摺痕 */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent calc(50% - 1px),rgba(0,0,0,.07) 50%,rgba(255,255,255,.7) calc(50% + 1px),transparent calc(50% + 3px)),
+    linear-gradient(180deg,transparent calc(33% - 1px),rgba(0,0,0,.06) 33%,rgba(255,255,255,.7) calc(33% + 1px),transparent calc(33% + 3px)),
+    linear-gradient(180deg,transparent calc(66% - 1px),rgba(0,0,0,.06) 66%,rgba(255,255,255,.7) calc(66% + 1px),transparent calc(66% + 3px));
+}
+.sheet:after{ /* 紙張邊緣陰影 */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 60px rgba(120,100,60,.12);
+}
+.hero h1{font-size:clamp(54px,13vw,104px);line-height:.9;text-align:center;transform:rotate(-2deg)}
+.hero h1 span{display:block}
+.hero h1 span:nth-child(2){margin-left:18%}
+.photo{position:relative;margin:26px auto 0;max-width:560px}
+.photo img,.photo .ph{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.photo img,.film img,.polaroid img{filter:saturate(.9) contrast(1.04) sepia(.06)}
+.photo img{box-shadow:0 10px 24px -16px rgba(40,30,10,.6)}
+.photo .ph{
+  display:grid;place-items:center;background:
+    repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 8px,transparent 8px 16px),#d9d6cf;
+  font-family:var(--script);font-size:24px;color:#8a857a;
+}
+.names{
+  position:absolute;left:-4%;right:-4%;bottom:-38px;text-align:center;
+  font-size:clamp(46px,11vw,84px);line-height:1;transform:rotate(-3deg);
+}
+.names .plus{display:inline-block;margin:0 .15em;transform:rotate(8deg)}
+.when{text-align:center;margin-top:60px}
+.when .date{font-size:clamp(40px,9vw,66px);line-height:1}
+.when .place{font-size:clamp(28px,6vw,40px);line-height:1.2;margin-top:4px}
+.intro{max-width:540px;margin:34px auto 0;text-align:center}
+.intro .en{font-family:var(--script);font-size:24px;line-height:1.45}
+.intro .en+.en{margin-top:12px}
+.intro .zh{font-size:15px;margin-top:18px;line-height:1.95}
+.intro .zh p+p{margin-top:8px}
+.countdown{display:flex;justify-content:center;gap:26px;margin-top:30px}
+.countdown div{text-align:center}
+.countdown b{display:block;font-family:var(--hand);font-weight:400;font-size:46px;line-height:1;color:var(--ink)}
+.countdown span{font-family:var(--script);font-size:19px;color:var(--ink-soft)}
+
+/* doodles */
+.doodle{position:absolute;color:var(--marker);pointer-events:none}
+.doodle svg{display:block;filter:url(#rough)}
+
+/* ---------- sections ---------- */
+section{padding:62px 0;position:relative}
+.sec-title{text-align:center;margin-bottom:34px}
+.sec-title h2{font-size:clamp(46px,10vw,64px);line-height:1;transform:rotate(-1.5deg)}
+.sec-title .zh{display:block;margin-top:8px;font-size:15px;letter-spacing:.3em}
+
+/* story */
+.story-text{text-align:center;max-width:540px;margin:0 auto}
+.story-text .en{font-family:var(--script);font-size:25px;line-height:1.5}
+.story-text .zh{font-size:15px;margin-top:14px}
+.milestones{list-style:none;margin:44px auto 0;max-width:560px;position:relative}
+.milestones:before{
+  content:"";position:absolute;left:113px;top:12px;bottom:12px;width:2px;
+  background:repeating-linear-gradient(180deg,var(--ink) 0 6px,transparent 6px 12px);opacity:.35;
+}
+.milestones li{display:grid;grid-template-columns:96px 1fr;column-gap:44px;align-items:baseline;padding:10px 0;position:relative}
+.milestones .yr{font-family:var(--hand);font-size:38px;line-height:1;text-align:right;color:var(--ink)}
+.milestones .yr.small{font-size:27px}
+.milestones li:before{
+  content:"";position:absolute;left:108px;top:24px;width:12px;height:12px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--marker);
+}
+.milestones li.hi:before{background:var(--marker)}
+.milestones li.hi .yr{color:var(--marker);filter:url(#rough)}
+.milestones h3{font-family:var(--script);font-size:28px;font-weight:600;line-height:1.1}
+.milestones p{font-size:14px;color:var(--ink-soft)}
+.ld{display:inline-flex;align-items:center;gap:4px;vertical-align:middle}
+.ld i{width:9px;height:9px;border-radius:50%;background:var(--marker)}
+.ld b{width:30px;border-top:2px dashed var(--marker)}
+
+/* schedule */
+.schedule{list-style:none;max-width:560px;margin:0 auto}
+.schedule li{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:14px 0;border-bottom:1px dashed rgba(36,35,31,.25);align-items:baseline}
+.schedule time{font-family:var(--hand);font-size:27px;line-height:1.1}
+.schedule h3{font-family:var(--script);font-size:28px;font-weight:600;line-height:1.15}
+.schedule p{font-size:14px;color:var(--ink-soft)}
+.schedule li.hi time,.schedule li.hi h3{color:var(--marker)}
+
+/* polaroids */
+.polaroids{display:flex;justify-content:center;gap:22px;margin:44px 0 6px;flex-wrap:wrap}
+.polaroid{background:#fbfaf6;padding:10px 10px 0;width:210px;box-shadow:0 14px 24px -16px rgba(40,30,10,.6);position:relative}
+.polaroid:nth-child(1){transform:rotate(-4deg)}
+.polaroid:nth-child(2){transform:rotate(2deg) translateY(14px)}
+.polaroid:nth-child(3){transform:rotate(-1.5deg)}
+.polaroid img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.polaroid figcaption{font-family:var(--script);font-size:22px;text-align:center;padding:6px 0 10px;line-height:1.2}
+.polaroid .tape{width:64px;margin-left:-32px;height:20px;top:-9px}
+
+/* film strip */
+.film{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;margin:0 -22px;scrollbar-width:thin}
+.film .track{
+  display:flex;gap:16px;width:max-content;padding:30px 26px 42px;
+  background:
+    repeating-linear-gradient(90deg,#d9d4c7 0 12px,transparent 12px 28px) left 10px top 9px/100% 12px no-repeat,
+    repeating-linear-gradient(90deg,#d9d4c7 0 12px,transparent 12px 28px) left 10px bottom 6px/100% 12px no-repeat,
+    #1f1d1a;
+  border-radius:3px;
+}
+.film figure{scroll-snap-align:center;position:relative}
+.film img{height:240px;width:auto;max-width:none;border-radius:2px}
+.film figcaption{position:absolute;left:2px;bottom:-19px;font:600 11px/1 ui-monospace,Menlo,monospace;color:#e2a048;letter-spacing:.12em}
+.swipe{text-align:center;font-family:var(--script);font-size:21px;color:var(--ink-soft);margin-top:14px}
+.walk-photo{grid-column:1/-1;justify-self:center;width:260px;transform:rotate(-2deg)}
+.walk-photo img{aspect-ratio:3/2}
+.foot-photo{width:230px;margin:0 auto 34px;transform:rotate(3deg)}
+.foot-photo img{aspect-ratio:4/5}
+
+/* places: 貼了膠帶的卡片 */
+.places{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:8px}
+.tag-card{position:relative;background:var(--paper-light);padding:34px 24px 26px;box-shadow:0 14px 26px -18px rgba(40,30,10,.5)}
+.tag-card:nth-child(1){transform:rotate(-1.4deg)}
+.tag-card:nth-child(2){transform:rotate(1.2deg)}
+.tape{position:absolute;top:-13px;left:50%;width:110px;height:28px;margin-left:-55px;background:var(--tape);transform:rotate(-3deg);
+  -webkit-mask:linear-gradient(90deg,transparent 0 3px,#000 3px calc(100% - 3px),transparent calc(100% - 3px));}
+.tag-card .when-tag{font-family:var(--hand);color:var(--marker);font-size:26px;line-height:1;filter:url(#rough)}
+.tag-card h3{font-family:var(--script);font-size:30px;font-weight:600;line-height:1.1;margin:8px 0 2px}
+.tag-card .zh-name{font-size:17px}
+.tag-card p{font-size:14px;color:var(--ink-soft)}
+.btn-hand{
+  display:inline-block;margin-top:14px;font-family:var(--script);font-size:22px;text-decoration:none;
+  border:2px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;padding:2px 18px;
+  background:transparent;color:var(--ink);cursor:pointer;
+}
+.btn-hand:hover{background:var(--ink);color:var(--paper-light)}
+.walk{grid-column:1/-1;text-align:center;font-family:var(--script);font-size:22px;color:var(--ink-soft)}
+
+/* forms: 橫線筆記紙 */
+.notepaper{
+  position:relative;background:var(--paper-light);padding:38px 32px 30px;
+  box-shadow:0 18px 30px -22px rgba(40,30,10,.5);
+}
+.notepaper:before{content:"";position:absolute;left:22px;top:0;bottom:0;width:1px;background:rgba(33,72,192,.28)}
+label{display:block;font-family:var(--zh);font-size:17px;line-height:1.4;margin:22px 0 4px}
+label:first-of-type{margin-top:0}
+label small{font-family:var(--zh);font-size:13px;color:var(--ink-soft);margin-left:8px}
+input[type=text],input[type=number],input[type=url],textarea{
+  width:100%;font-family:var(--zh);font-size:17px;color:var(--ink);
+  background:transparent;border:0;border-bottom:1.5px solid rgba(36,35,31,.45);padding:4px 2px;border-radius:0;
+}
+textarea{min-height:120px;resize:vertical;line-height:32px;
+  background:repeating-linear-gradient(180deg,transparent 0 31px,rgba(36,35,31,.22) 31px 32px);border-bottom:0}
+input::placeholder,textarea::placeholder{color:#a39e92}
+input:focus,textarea:focus{outline:none;border-color:var(--marker)}
+.choices{display:grid;gap:6px;margin:4px 0 6px}
+.choices label{display:flex;align-items:center;gap:12px;font-size:16px;margin:0;cursor:pointer;padding:3px 0}
+.choices input{appearance:none;width:20px;height:20px;border:2px solid var(--ink);border-radius:50% 45% 55% 48%;flex:none;display:grid;place-items:center;cursor:pointer}
+.choices input:checked{border-color:var(--marker)}
+.choices input:checked:after{content:"✓";font-family:var(--hand);color:var(--marker);font-size:24px;line-height:0;transform:translate(2px,-3px)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.submit-row{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-ink{
+  font-family:var(--zh);font-size:17px;letter-spacing:.12em;background:var(--marker);color:#fff;border:0;cursor:pointer;
+  padding:9px 28px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+}
+.btn-ink:hover{background:var(--marker-dark)}
+.btn-ink[disabled]{opacity:.5;cursor:wait}
+.msg{font-family:var(--zh);font-size:15px;color:var(--marker)}
+.msg.err{color:#b8342a}
+.hint{font-size:13px;color:var(--ink-soft);margin-top:14px}
+
+/* wall: 便條 */
+.wall{columns:2 250px;column-gap:22px;margin-top:40px;padding-top:12px}
+.note{
+  break-inside:avoid;display:inline-block;width:100%;position:relative;margin:0 0 30px;padding:26px 20px 16px;
+  background:var(--paper-light);box-shadow:0 12px 22px -16px rgba(40,30,10,.55);
+}
+.note:nth-child(4n+1){transform:rotate(-1.2deg)}
+.note:nth-child(4n+2){transform:rotate(.9deg);background:#e9eef9}
+.note:nth-child(4n+3){transform:rotate(-.5deg)}
+.note:nth-child(4n){transform:rotate(1.4deg);background:#f3eee2}
+.note .tape{width:70px;margin-left:-35px;height:22px;top:-10px}
+.note p{font-family:var(--script);font-size:23px;line-height:1.3;white-space:pre-wrap}
+.note .song{margin-top:10px;font-family:var(--script);font-size:20px;color:var(--marker)}
+.note .song a{color:var(--marker)}
+.note .from{margin-top:8px;text-align:right;font-family:var(--hand);font-size:22px;color:var(--ink-soft)}
+.empty{text-align:center;font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-top:30px}
+
+/* playlist: 卡帶 */
+.vinyl{width:min(400px,92%);margin:0 auto 28px;transform:rotate(-2deg)}
+.vinyl svg{width:100%;height:auto;display:block}
+.vinyl .sk{filter:url(#rough)}
+.vinyl .disc{transform-box:fill-box;transform-origin:center;animation:spin 3.6s linear infinite}
+.vinyl .notes text{animation:float 3s ease-in-out infinite}
+.vinyl .notes text:nth-child(2){animation-delay:.8s}
+.vinyl .notes text:nth-child(3){animation-delay:1.6s}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.9}50%{transform:translateY(-8px);opacity:.45}}
+@media (prefers-reduced-motion:reduce){.vinyl .disc,.vinyl .notes text{animation:none}}
+.spotify-box{background:var(--paper-light);padding:10px;box-shadow:0 14px 26px -18px rgba(40,30,10,.5)}
+.spotify-box iframe{display:block;width:100%;border:0;border-radius:10px}
+.spotify-placeholder{padding:34px 20px;text-align:center;font-family:var(--script);font-size:24px;color:var(--ink-soft)}
+.center{text-align:center}
+
+footer{padding:40px 0 80px;text-align:center}
+footer .marker{font-size:clamp(40px,9vw,58px);line-height:1;transform:rotate(-2deg);display:inline-block}
+footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-top:10px}
+
+.demo-banner{background:#fff2b8;color:#6b5400;font-size:13px;text-align:center;padding:7px 14px}
+
+@media (max-width:620px){
+  .sheet{padding:38px 18px 44px}
+  .places,.row{grid-template-columns:1fr}
+  .schedule li{grid-template-columns:1fr;gap:0}
+  .milestones:before{left:88px}
+  .milestones li{grid-template-columns:74px 1fr;column-gap:36px}
+  .milestones li:before{left:83px}
+  .milestones .yr{font-size:30px}
+  .milestones .yr.small{font-size:21px}
+  .notepaper{padding:32px 20px 24px 30px}
+  .countdown{gap:18px}
+  .doodle.hide-sm{display:none}
+  .polaroid{width:44%}
+  .polaroid:nth-child(3){display:none}
+  .film img{height:180px}
+}
+</style>
+</head>
+<body>
+
+<!-- 手繪抖動濾鏡：讓字和線條像麥克筆畫的 -->
+<svg class="svg-defs" aria-hidden="true">
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="2.6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="demo-banner" id="demoBanner" hidden>
+  展示模式：留言目前只存在這台裝置。設定好 Google 試算表後，大家的留言就會集中保存（見「設定教學.md」）。
+</div>
+
+<nav>
+  <div class="wrap">
+    <a href="#story">our story</a>
+    <a href="#frames">frames</a>
+    <a href="#day">the day</a>
+    <a href="#where">where</a>
+    <a href="#rsvp">rsvp</a>
+    <a href="#notes">notes</a>
+    <a href="#playlist">playlist</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="doodle hide-sm" style="left:6%;top:30px">
+        <svg width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M27 4 C29 19 33 24 50 27 C33 30 29 35 27 50 C25 35 21 30 4 27 C21 24 25 19 27 4Z"/></svg>
+      </div>
+      <div class="doodle" style="right:8%;top:120px">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3v24M3 15h24M7 7l16 16M23 7L7 23"/></svg>
+      </div>
+
+      <h1 class="marker"><span>We're getting</span><span>married!</span></h1>
+
+      <div class="photo">
+        <img id="heroPhoto" alt="Yencheng & Yishin" hidden>
+        <div class="ph" id="heroPh">( our photo goes here )</div>
+        <div class="names marker"><span id="nameA">Yencheng</span><span class="plus">+</span><span id="nameB">Yishin</span></div>
+        <div class="doodle" style="right:-14px;top:-26px">
+          <svg width="70" height="80" viewBox="0 0 70 80" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M35 6 C37 20 40 24 52 26 C40 28 37 32 35 46 C33 32 30 28 18 26 C30 24 33 20 35 6Z"/><path d="M56 50 C57 56 59 58 64 59 C59 60 57 62 56 68 C55 62 53 60 48 59 C53 58 55 56 56 50Z"/></svg>
+        </div>
+      </div>
+
+      <div class="when">
+        <div class="date marker">15 Jan 2027</div>
+        <div class="place marker">Taipei, Taiwan</div>
+      </div>
+
+      <div class="intro">
+        <div id="introEn"></div>
+        <div class="zh" id="introZh"></div>
+      </div>
+
+      <div class="countdown" id="countdown" aria-label="countdown">
+        <div><b id="cdD">--</b><span>days</span></div>
+        <div><b id="cdH">--</b><span>hours</span></div>
+        <div><b id="cdM">--</b><span>mins</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="story">
+  <div class="wrap">
+    <div class="sec-title"><h2 class="marker">our story</h2><span class="zh">我們的故事</span></div>
+    <div class="story-text">
+      <p class="en">We first met in 2014, and our story began in 2016.<br>
+      Five of these ten years were spent far apart.<br>
+      This year marks our <span style="color:var(--marker)">10th anniversary</span> —<br>
+      and from here on, we'll be each other's life partner,<br>
+      ready for many more adventures together.</p>
+      <p class="zh">2014 年初次見面，2016 年開始了我們的故事。這十年裡，有五年隔著遙遠的距離。今年是我們的十週年，接下來，我們想成為彼此的 life partner，一起經歷人生更多的冒險。</p>
+    </div>
+    <div class="polaroids">
+      <figure class="polaroid"><div class="tape"></div><img src="photos/carousel.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>still smiling</figcaption></figure>
+      <figure class="polaroid"><div class="tape"></div><img src="photos/river-smile.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>my favorite person</figcaption></figure>
+      <figure class="polaroid"><div class="tape"></div><img src="photos/subway.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>side by side</figcaption></figure>
+    </div>
+    <ol class="milestones">
+      <li><span class="yr">2014</span><div><h3>first hello</h3><p>初次見面</p></div></li>
+      <li><span class="yr">2016</span><div><h3>our story begins</h3><p>故事開始</p></div></li>
+      <li><span class="yr small"><span class="ld" aria-hidden="true"><i></i><b></b><i></i></span></span><div><h3>5 years, long distance</h3><p>五年遠距離 · 距離很遠，心很近</p></div></li>
+      <li><span class="yr">2026</span><div><h3>ten years</h3><p>十週年</p></div></li>
+      <li class="hi"><span class="yr small">1.15.27</span><div><h3>life partners, officially</h3><p>成為彼此一生的夥伴</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="frames">
+  <div class="wrap">
+    <div class="sec-title"><h2 class="marker">a few frames</h2><span class="zh">我們的照片</span></div>
+    <div class="film">
+      <div class="track">
+          <figure><img src="photos/bridge-walk.jpg" width="744" height="1100" alt="" loading="lazy"><figcaption>1 ▸ 1A</figcaption></figure>
+          <figure><img src="photos/camera.jpg" width="1100" height="744" alt="" loading="lazy"><figcaption>2 ▸ 2A</figcaption></figure>
+          <figure><img src="photos/under-bridge.jpg" width="744" height="1100" alt="" loading="lazy"><figcaption>3 ▸ 3A</figcaption></figure>
+          <figure><img src="photos/dumbo.jpg" width="739" height="1100" alt="" loading="lazy"><figcaption>4 ▸ 4A</figcaption></figure>
+          <figure><img src="photos/river-sit.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>5 ▸ 5A</figcaption></figure>
+          <figure><img src="photos/carousel-2.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>6 ▸ 6A</figcaption></figure>
+          <figure><img src="photos/pier.jpg" width="739" height="1100" alt="" loading="lazy"><figcaption>7 ▸ 7A</figcaption></figure>
+          <figure><img src="photos/river-stand.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>8 ▸ 8A</figcaption></figure>
+          <figure><img src="photos/skyline.jpg" width="739" height="1100" alt="" loading="lazy"><figcaption>9 ▸ 9A</figcaption></figure>
+          <figure><img src="photos/tote.jpg" width="739" height="1100" alt="" loading="lazy"><figcaption>10 ▸ 10A</figcaption></figure>
+          <figure><img src="photos/dumbo-2.jpg" width="739" height="1100" alt="" loading="lazy"><figcaption>11 ▸ 11A</figcaption></figure>
+          <figure><img src="photos/bridge-rail.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>12 ▸ 12A</figcaption></figure>
+      </div>
+    </div>
+    <p class="swipe">← swipe through →</p>
+  </div>
+</section>
+
+<section id="day">
+  <div class="wrap">
+    <div class="sec-title"><h2 class="marker">the day</h2><span class="zh">當天行程 · 2027.01.15（五）</span></div>
+    <ol class="schedule">
+      <li><time>9:30 – 10:00</time><div><h3>Meet up at the registration office</h3><p>大安戶政事務所集合</p></div></li>
+      <li class="hi"><time>10:00 – 11:00</time><div><h3>We sign the papers!</h3><p>辦理登記</p></div></li>
+      <li><time>11:00 – 11:40</time><div><h3>Photos together</h3><p>戶政事務所拍攝</p></div></li>
+      <li><time>11:40 – 12:00</time><div><h3>A little walk to lunch</h3><p>走路前往初魚鮨</p></div></li>
+      <li class="hi"><time>12:00 – 15:00</time><div><h3>Long lunch &amp; good company</h3><p>初魚鮨用餐</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="where">
+  <div class="wrap">
+    <div class="sec-title"><h2 class="marker">where</h2><span class="zh">地點</span></div>
+    <div class="places">
+      <div class="tag-card">
+        <div class="tape"></div>
+        <div class="when-tag">9:30 am</div>
+        <h3 id="placeAEn">Registration Office</h3>
+        <div class="zh-name" id="placeAName"></div>
+        <p id="placeAAddr"></p>
+        <a class="btn-hand" id="placeAMap" target="_blank" rel="noopener">open map →</a>
+      </div>
+      <div class="tag-card">
+        <div class="tape"></div>
+        <div class="when-tag">12:00 pm</div>
+        <h3 id="placeBEn">Lunch</h3>
+        <div class="zh-name" id="placeBName"></div>
+        <p id="placeBAddr"></p>
+        <a class="btn-hand" id="placeBMap" target="_blank" rel="noopener">open map →</a>
+      </div>
+      <p class="walk">~ we'll walk over together ~</p>
+      <figure class="polaroid walk-photo"><img src="photos/feet.jpg" width="1100" height="739" alt="" loading="lazy"><figcaption>a little walk</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="wrap">
+    <div class="sec-title"><h2 class="marker">will you come?</h2><span class="zh">回覆出席</span></div>
+    <form class="notepaper" id="rsvpForm">
+      <label for="rName">你的名字</label>
+      <input type="text" id="rName" name="name" required maxlength="40" placeholder="讓我們知道你是誰">
+
+      <label>會參加哪些部分？</label>
+      <div class="choices">
+        <label><input type="radio" name="attend" value="登記＋聚餐" required> 都會到！登記＋聚餐</label>
+        <label><input type="radio" name="attend" value="只參加登記"> 只參加登記</label>
+        <label><input type="radio" name="attend" value="只參加聚餐"> 只參加聚餐</label>
+        <label><input type="radio" name="attend" value="無法出席"> 這次沒辦法，送上祝福</label>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="rCount">出席人數（含自己）</label>
+          <input type="number" id="rCount" name="count" min="0" max="10" value="1">
+        </div>
+        <div>
+          <label for="rDiet">飲食需求（選填）</label>
+          <input type="text" id="rDiet" name="diet" maxlength="60" placeholder="例：不吃生食、海鮮過敏">
+        </div>
+      </div>
+
+      <label for="rNote">想跟我們說的話（選填）</label>
+      <input type="text" id="rNote" name="note" maxlength="200">
+
+      <div class="submit-row">
+        <button class="btn-ink" type="submit">送出回覆</button>
+        <span class="msg" id="rsvpMsg" role="status"></span>
+      </div>
+      <p class="hint" id="rsvpDeadline"></p>
+    </form>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <div class="sec-title"><h2 class="marker">leave us a note</h2><span class="zh">留下祝福</span></div>
+    <form class="notepaper" id="blessForm">
+      <label for="bName">署名</label>
+      <input type="text" id="bName" name="name" required maxlength="40" placeholder="你的名字或暱稱">
+
+      <label for="bMsg">祝福的話</label>
+      <textarea id="bMsg" name="message" required maxlength="600" placeholder="write us something…"></textarea>
+
+      <label for="bSong">送我們一首歌（選填，會加進祝福歌單）</label>
+      <div class="row">
+        <input type="text" id="bSong" name="song" maxlength="80" placeholder="歌名 – 歌手">
+        <input type="url" id="bLink" name="link" maxlength="300" placeholder="Spotify 連結（選填）">
+      </div>
+
+      <div class="submit-row">
+        <button class="btn-ink" type="submit">貼上祝福</button>
+        <span class="msg" id="blessMsg" role="status"></span>
+      </div>
+    </form>
+
+    <div class="wall" id="wall"></div>
+    <p class="empty" id="wallEmpty" hidden>no notes yet — be the first ♡</p>
+  </div>
+</section>
+
+<section id="playlist">
+  <div class="wrap">
+    <div class="sec-title"><h2 class="marker">songs for us</h2><span class="zh">祝福歌單</span></div>
+    <div class="vinyl" aria-hidden="true">
+      <svg viewBox="0 0 400 300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g class="sk" stroke="#24231f" stroke-width="2.4">
+          <path d="M22 26 Q20 18 30 18 L372 20 Q382 20 381 30 L379 272 Q379 282 369 282 L30 281 Q20 281 21 271 Z" fill="#f5f3ee"/>
+          <circle cx="352" cy="252" r="9" fill="#f5f3ee"/><circle cx="324" cy="252" r="9" fill="#f5f3ee"/>
+          <path d="M44 262 L104 262" stroke-width="1.6"/>
+        </g>
+        <g class="disc">
+          <circle cx="170" cy="150" r="118" fill="#1f1d1a"/>
+          <g stroke="#4a463f" stroke-width="1.1">
+            <circle cx="170" cy="150" r="108"/><circle cx="170" cy="150" r="99"/><circle cx="170" cy="150" r="90"/>
+            <circle cx="170" cy="150" r="80"/><circle cx="170" cy="150" r="70"/><circle cx="170" cy="150" r="60"/><circle cx="170" cy="150" r="51"/>
+          </g>
+          <path d="M98 88 A96 96 0 0 1 150 60" stroke="rgba(255,255,255,.28)" stroke-width="7"/>
+          <path d="M242 212 A96 96 0 0 1 196 240" stroke="rgba(255,255,255,.18)" stroke-width="7"/>
+          <circle cx="170" cy="150" r="42" fill="#2148c0"/>
+          <circle cx="170" cy="150" r="36" stroke="#f5f3ee" stroke-width="1" stroke-dasharray="3 4"/>
+          <text x="170" y="148" text-anchor="middle" font-family="Covered By Your Grace, cursive" font-size="20" fill="#f5f3ee">Y + Y</text>
+          <text x="170" y="166" text-anchor="middle" font-family="Caveat, cursive" font-size="13" fill="#f5f3ee">side A · 2027</text>
+          <circle cx="170" cy="150" r="4" fill="#f5f3ee"/>
+        </g>
+        <g class="sk" stroke="#24231f" stroke-width="2.6">
+          <circle cx="336" cy="64" r="17" fill="#f5f3ee"/><circle cx="336" cy="64" r="6" fill="#24231f"/>
+          <path d="M336 64 L326 188 L282 214"/>
+          <path d="M272 206 L290 200 L296 218 L278 224 Z" fill="#2148c0"/>
+        </g>
+        <g class="notes" fill="#2148c0" font-family="Caveat, cursive">
+          <text x="40" y="70" font-size="34">♪</text><text x="62" y="46" font-size="26">♫</text><text x="300" y="130" font-size="24">♪</text>
+        </g>
+      </svg>
+    </div>
+    <div class="spotify-box" id="spotifyBox">
+      <div class="spotify-placeholder">the playlist is warming up — leave us a song above ♪</div>
+    </div>
+    <div class="center" id="collabWrap" hidden>
+      <a class="btn-hand" id="collabLink" target="_blank" rel="noopener">add a song on Spotify →</a>
+      <p class="hint">需要 Spotify 帳號；連結開放期間有限。</p>
+    </div>
+    <p class="center script" style="font-size:22px;color:var(--ink-soft);margin-top:18px">every song you send us goes on the record.</p>
+  </div>
+</section>
+
+<footer>
+  <figure class="polaroid foot-photo"><div class="tape"></div><img src="photos/silhouette.jpg" width="739" height="1100" alt="" loading="lazy"><figcaption>to the next adventure</figcaption></figure>
+  <div class="marker">see you on 1.15 ♡</div>
+  <p id="footNames">Yencheng &amp; Yishin</p>
+</footer>
+
+<script>
+/* =========================================================
+   ✏️  CONFIG：只要改這裡
+   ========================================================= */
+const CONFIG = {
+  nameA: "Yencheng",
+  nameB: "Yishin",
+
+  // 照片：把照片放在 index.html 旁邊的 photos 資料夾，再填檔名。留空會顯示佔位框
+  heroPhoto: "photos/hero.jpg",
+
+  introEn: [
+    "In our tenth year together, we've decided to become partners for life. We imagine marriage as an enchanted forest, lush and full of giant trees. We know this isn't the end of the road, and we expect mountains and valleys ahead, but we still choose to walk on, together.",
+    "We hope this will be more than a witnessing. We'd love it to be an easy, relaxed get-together, and we're inviting you to come make some precious memories with us!"
+  ],
+  introZh: [
+    "在一起的第十年，我們決定成為一生的夥伴。想像婚姻，像是一場植被充滿、巨樹叢生的魔法森林，我們知道這裡不是終點，也預期生命將有高山和河谷，但我們仍決定共度與前行。",
+    "我們希望這不只是見證，是一場自在的相聚，我們想邀請你，一起留下珍貴的回憶！"
+  ],
+
+  placeA: { en: "Registration Office", name: "臺北市大安區戶政事務所", addr: "", mapQuery: "臺北市大安區戶政事務所" },
+  placeB: { en: "Lunch spot", name: "初魚鮨 泰順店", addr: "臺北市大安區泰順街 2-2 號", mapQuery: "初魚鮨 泰順店 臺北市大安區泰順街2-2號" },
+
+  rsvpDeadline: "2026/12/31",
+
+  spotifyPlaylistUrl: "",   // https://open.spotify.com/playlist/xxxx
+  spotifyCollabUrl: "",     // 協作邀請連結（7 天效期），不用就留空
+
+  scriptUrl: ""             // Google Apps Script /exec 網址。留空 = 展示模式
+};
+/* ========================================================= */
+
+const EVENT_TIME = new Date("2027-01-15T09:30:00+08:00");
+const $ = id => document.getElementById(id);
+const DEMO = !CONFIG.scriptUrl;
+const paras = arr => [].concat(arr).map(t => Object.assign(document.createElement("p"), { textContent: t }));
+
+$("nameA").textContent = CONFIG.nameA;
+$("nameB").textContent = CONFIG.nameB;
+$("footNames").textContent = `${CONFIG.nameA} & ${CONFIG.nameB}`;
+document.title = `${CONFIG.nameA} & ${CONFIG.nameB} · 15 Jan 2027`;
+$("introEn").replaceChildren(...paras(CONFIG.introEn).map(p => (p.className = "en", p)));
+$("introZh").replaceChildren(...paras(CONFIG.introZh));
+for (const k of ["A","B"]) {
+  const p = CONFIG["place"+k];
+  $("place"+k+"En").textContent = p.en;
+  $("place"+k+"Name").textContent = p.name;
+  $("place"+k+"Addr").textContent = p.addr;
+  $("place"+k+"Map").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(p.mapQuery || p.name);
+}
+if (CONFIG.rsvpDeadline) $("rsvpDeadline").textContent = `請在 ${CONFIG.rsvpDeadline} 前回覆，方便我們跟餐廳確認人數。`;
+if (DEMO) $("demoBanner").hidden = false;
+
+if (CONFIG.heroPhoto) {
+  const img = $("heroPhoto");
+  img.onload = () => { img.hidden = false; $("heroPh").hidden = true; };
+  img.src = CONFIG.heroPhoto;
+}
+
+function tick(){
+  let ms = EVENT_TIME - Date.now();
+  if (ms <= 0) { $("countdown").innerHTML = '<div><b>today!</b></div>'; return; }
+  const d = Math.floor(ms/864e5); ms -= d*864e5;
+  const h = Math.floor(ms/36e5);  ms -= h*36e5;
+  $("cdD").textContent = d; $("cdH").textContent = h; $("cdM").textContent = Math.floor(ms/6e4);
+}
+tick(); setInterval(tick, 30000);
+
+(function(){
+  const m = (CONFIG.spotifyPlaylistUrl || "").match(/playlist\/([A-Za-z0-9]+)/);
+  if (m) $("spotifyBox").innerHTML =
+    `<iframe src="https://open.spotify.com/embed/playlist/${m[1]}?utm_source=generator&theme=0" height="420"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="playlist"></iframe>`;
+  if (CONFIG.spotifyCollabUrl) { $("collabLink").href = CONFIG.spotifyCollabUrl; $("collabWrap").hidden = false; }
+})();
+
+/* ----- 資料存取 ----- */
+const LS_KEY = "regday-blessings";
+const demoLoad = () => { try { return JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch { return []; } };
+const demoSave = l => { try { localStorage.setItem(LS_KEY, JSON.stringify(l)); } catch {} };
+
+async function send(payload){
+  if (DEMO) {
+    if (payload.type === "blessing") { const l = demoLoad(); l.unshift(payload); demoSave(l); }
+    await new Promise(r => setTimeout(r, 400)); return;
+  }
+  await fetch(CONFIG.scriptUrl, { method:"POST", mode:"no-cors",
+    headers:{ "Content-Type":"text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
+}
+async function loadBlessings(){
+  if (DEMO) return demoLoad();
+  const data = await (await fetch(CONFIG.scriptUrl + "?action=blessings")).json();
+  return Array.isArray(data) ? data : [];
+}
+const safeLink = u => { try { const x = new URL(u); return x.protocol === "https:" ? x.href : ""; } catch { return ""; } };
+
+function renderWall(list){
+  const wall = $("wall"); wall.innerHTML = "";
+  $("wallEmpty").hidden = list.length > 0;
+  for (const b of list) {
+    const n = document.createElement("article"); n.className = "note";
+    n.innerHTML = '<div class="tape"></div>';
+    const p = document.createElement("p"); p.textContent = b.message; n.appendChild(p);
+    if (b.song) {
+      const s = document.createElement("div"); s.className = "song"; s.append("♪ ");
+      const link = safeLink(b.link || "");
+      if (link) { const a = document.createElement("a"); a.href = link; a.target = "_blank"; a.rel = "noopener"; a.textContent = b.song; s.appendChild(a); }
+      else s.append(b.song);
+      n.appendChild(s);
+    }
+    const f = document.createElement("div"); f.className = "from"; f.textContent = "— " + b.name; n.appendChild(f);
+    wall.appendChild(n);
+  }
+}
+async function refreshWall(){
+  try { renderWall(await loadBlessings()); }
+  catch { $("wallEmpty").hidden = false; $("wallEmpty").textContent = "notes can't load right now, try again soon."; }
+}
+refreshWall();
+
+function bindForm(formId, msgId, type, okText, after){
+  const form = $(formId), msg = $(msgId), btn = form.querySelector("button");
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    for (const k in data) data[k] = String(data[k]).trim();
+    data.type = type; data.time = new Date().toISOString();
+    btn.disabled = true; msg.className = "msg"; msg.textContent = "送出中⋯";
+    try { await send(data); msg.textContent = okText; form.reset(); if (after) after(data); }
+    catch { msg.className = "msg err"; msg.textContent = "沒有送出成功，請再試一次。"; }
+    finally { btn.disabled = false; }
+  });
+}
+bindForm("rsvpForm", "rsvpMsg", "rsvp", "收到了，謝謝你！1/15 見 ♡");
+bindForm("blessForm", "blessMsg", "blessing", "祝福貼上了，謝謝你 ♡", data => {
+  if (DEMO) { refreshWall(); return; }
+  const before = $("wall").children.length;
+  const mine = { name:data.name, message:data.message, song:data.song, link:data.link };
+  loadBlessings().then(l => renderWall(l.length > before ? l : [mine, ...l])).catch(() => {});
+});
+</script>
+</body>
+</html>
