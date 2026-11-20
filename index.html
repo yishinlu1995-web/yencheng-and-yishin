@@ -76,7 +76,23 @@ nav:after{content:"";display:block;height:6px;background:
 .hero h1 span{display:block}
 .hero h1 span:nth-child(2){margin-left:18%}
 .photo{position:relative;margin:26px auto 0;max-width:460px}
-.photo img,.photo .ph{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 72%}
+.photo img,.photo .ph{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.photo-doodle{position:absolute;left:0;top:0;width:100%;aspect-ratio:4/5;overflow:visible;pointer-events:none}
+.photo-doodle .outline{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough);
+  stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s .4s ease-out forwards;filter:drop-shadow(0 0 2px rgba(0,0,0,.25))}
+.photo-doodle .hand{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:0;animation:fadein .8s 2.4s forwards;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+.photo-doodle .t{fill:#fff;stroke:none;font-family:"Caveat",cursive;font-size:44px;font-weight:600}
+.photo-doodle .tw{fill:#fff;transform-box:fill-box;transform-origin:center;animation:twinkle 1.8s var(--d,0s) ease-in-out infinite;filter:drop-shadow(0 0 3px rgba(255,255,255,.8))}
+.photo-doodle .hb{fill:none;stroke:#fff;stroke-width:3.5;transform-box:fill-box;transform-origin:center;animation:beat 2s var(--d,0s) ease-in-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadein{to{opacity:1}}
+@keyframes twinkle{0%,100%{opacity:.25;scale:.6}50%{opacity:1;scale:1.15}}
+@keyframes beat{0%,60%,100%{scale:1}15%{scale:1.25}30%{scale:1.05}45%{scale:1.18}}
+.doodle svg{animation:twinkle2 2.2s ease-in-out infinite;transform-origin:center}
+.doodle:nth-of-type(2) svg{animation-delay:.8s}
+.doodle:nth-of-type(3) svg{animation-delay:1.5s}
+@keyframes twinkle2{0%,100%{opacity:.45;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.12) rotate(12deg)}}
+@media (prefers-reduced-motion:reduce){.photo-doodle *,.doodle svg{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
 .photo img,.film img,.polaroid img{filter:saturate(.9) contrast(1.04) sepia(.06)}
 .photo img{box-shadow:0 10px 24px -16px rgba(40,30,10,.6)}
 .photo .ph{
@@ -447,8 +463,27 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
       <h1 class="marker"><span>We're getting</span><span>married!</span></h1>
 
       <div class="photo">
-        <img id="heroPhoto" alt="Yencheng & Yishin" hidden>
+        <img id="heroPhoto" width="896" height="1120" alt="Yencheng & Yishin" hidden>
         <div class="ph" id="heroPh">( our photo goes here )</div>
+        <svg class="photo-doodle" viewBox="0 0 896 1120" aria-hidden="true">
+          <path class="outline" pathLength="1" d="M618 1119L618 1116C618 1115 620 1114 616 1110C612 1106 600 1114 597 1095C594 1076 594 1018 597 996C600 974 609 971 612 961C615 951 608 947 613 937C618 927 634 911 641 900C648 889 651 882 656 869C661 856 666 835 669 819C672 803 674 787 674 772C674 757 673 745 668 731C663 717 646 702 644 689C642 676 656 665 657 653C658 641 655 625 651 615C647 605 642 599 633 594C624 589 611 585 600 585C589 585 574 588 566 592C558 596 556 598 553 606C550 614 549 633 546 642C543 651 537 653 536 660C535 667 536 675 538 682C540 689 545 698 546 703C547 708 546 712 542 713C538 714 538 709 523 706C508 703 470 701 455 693C440 685 442 664 436 656C430 648 427 647 422 644C417 641 411 639 406 638C401 637 399 636 393 637C387 638 377 641 372 643C367 645 366 646 362 651C358 656 352 660 350 672C348 684 349 711 350 721C351 731 352 730 356 734C360 738 371 738 373 746C375 754 364 768 366 781C368 794 376 814 382 827C388 840 396 847 399 857C402 867 402 875 403 886C404 897 399 912 402 924C405 936 420 950 422 961C424 972 415 966 414 992C413 1018 414 1095 414 1116L414 1119"/>
+          <g class="hand">
+            <path d="M150 300c-14-62 30-100 150-104s178 30 168 88c-8 50-72 70-160 66l-20 44-14-48c-74-8-118-20-124-46z"/>
+            <text x="308" y="268" text-anchor="middle" class="t">you + me</text>
+            <text x="308" y="314" text-anchor="middle" class="t">= always ♡</text>
+            <text x="22" y="780" class="t">ten years</text>
+            <text x="40" y="826" class="t">&amp; counting</text>
+            <path d="M250 778c40-20 80-36 120-58" stroke-dasharray="10 12"/><path d="M344 712l28 6-14 24"/>
+          </g>
+          <g class="tw-g">
+            <path class="tw" style="--d:0s" transform="translate(500 600)" d="M0 -14C1.5 -4 4 -1.5 14 0C4 1.5 1.5 4 0 14C-1.5 4 -4 1.5 -14 0C-4 -1.5 -1.5 -4 0 -14Z"/>
+            <path class="tw" style="--d:.7s" transform="translate(800 740) scale(.8)" d="M0 -14C1.5 -4 4 -1.5 14 0C4 1.5 1.5 4 0 14C-1.5 4 -4 1.5 -14 0C-4 -1.5 -1.5 -4 0 -14Z"/>
+            <path class="tw" style="--d:1.3s" transform="translate(120 480) scale(1.1)" d="M0 -14C1.5 -4 4 -1.5 14 0C4 1.5 1.5 4 0 14C-1.5 4 -4 1.5 -14 0C-4 -1.5 -1.5 -4 0 -14Z"/>
+            <path class="tw" style="--d:1.9s" transform="translate(560 560) scale(.6)" d="M0 -14C1.5 -4 4 -1.5 14 0C4 1.5 1.5 4 0 14C-1.5 4 -4 1.5 -14 0C-4 -1.5 -1.5 -4 0 -14Z"/>
+            <path class="hb" transform="translate(500 680) scale(1.2)" d="M0 8C-9 2-12-4-9-8C-6-11-1-10 0-6C1-10 6-11 9-8C12-4 9 2 0 8Z"/>
+            <path class="hb" style="--d:.9s" transform="translate(780 640) scale(.9)" d="M0 8C-9 2-12-4-9-8C-6-11-1-10 0-6C1-10 6-11 9-8C12-4 9 2 0 8Z"/>
+          </g>
+        </svg>
         <div class="doodle" style="right:-14px;top:-26px">
           <svg width="70" height="80" viewBox="0 0 70 80" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M35 6 C37 20 40 24 52 26 C40 28 37 32 35 46 C33 32 30 28 18 26 C30 24 33 20 35 6Z"/><path d="M56 50 C57 56 59 58 64 59 C59 60 57 62 56 68 C55 62 53 60 48 59 C53 58 55 56 56 50Z"/></svg>
         </div>
