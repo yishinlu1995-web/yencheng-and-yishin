@@ -304,6 +304,10 @@ input:focus,textarea:focus{outline:none;border-color:var(--marker)}
 .msg{font-family:var(--zh);font-size:15px;color:var(--marker)}
 .msg.err{color:#b8342a}
 .hint{font-size:13px;color:var(--ink-soft);margin-top:14px}
+.collab-hint{margin-top:18px;padding:12px 14px;background:#e9eef9;font-size:15px;line-height:1.8}
+.collab-hint a{color:var(--marker);font-weight:400;text-decoration:underline;text-underline-offset:4px}
+.collab-hint small{font-size:12.5px;color:var(--ink-soft)}
+.note .why{margin-top:4px;font-size:13px;color:var(--ink-soft);line-height:1.7}
 
 /* wall: 便條 */
 .wall{columns:2 250px;column-gap:22px;margin-top:40px;padding-top:12px}
@@ -673,6 +677,11 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
         <input type="url" id="bLink" name="link" maxlength="300" placeholder="Spotify 連結（選填）">
       </div>
 
+      <label for="bWhy">為什麼選這首歌？（選填）</label>
+      <input type="text" id="bWhy" name="why" maxlength="300" placeholder="這首歌讓你想到我們的什麼？">
+
+      <p class="collab-hint" id="collabHint" hidden>想直接把歌放進歌單？<a id="collabInline" target="_blank" rel="noopener">打開歌單，自己加歌 →</a><br><small>需要 Spotify 帳號；也歡迎在上面寫下為什麼選這首 🎶</small></p>
+
       <div class="submit-row">
         <button class="btn-ink" type="submit">貼上祝福</button>
         <span class="msg" id="blessMsg" role="status"></span>
@@ -722,7 +731,7 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
       <div class="spotify-placeholder">the playlist is warming up — leave us a song above ♪</div>
     </div>
     <div class="center" id="collabWrap" hidden>
-      <a class="btn-hand" id="collabLink" target="_blank" rel="noopener">add a song on Spotify →</a>
+      <a class="btn-hand" id="collabLink" target="_blank" rel="noopener">打開歌單，自己加歌 →</a>
       <p class="hint">需要 Spotify 帳號；連結開放期間有限。</p>
     </div>
     <p class="center script" style="font-size:22px;color:var(--ink-soft);margin-top:18px">every song you send us goes on the record.</p>
@@ -804,8 +813,15 @@ tick(); setInterval(tick, 30000);
   if (m) $("spotifyBox").innerHTML =
     `<iframe src="https://open.spotify.com/embed/playlist/${m[1]}?utm_source=generator&theme=0" height="420"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="playlist"></iframe>`;
-  if (CONFIG.spotifyCollabUrl) { $("collabLink").href = CONFIG.spotifyCollabUrl; $("collabWrap").hidden = false; }
 })();
+
+function showCollab(url){
+  if (!/^https:\/\/open\.spotify\.com\//.test(url || "")) return;
+  $("collabLink").href = url; $("collabWrap").hidden = false;
+  $("collabInline").href = url; $("collabHint").hidden = false;
+}
+showCollab(CONFIG.spotifyCollabUrl);
+if (!DEMO) fetch(CONFIG.scriptUrl + "?action=config").then(r => r.json()).then(c => showCollab(c && c.collabUrl)).catch(() => {});
 
 /* ----- 資料存取 ----- */
 const LS_KEY = "regday-blessings";
@@ -840,6 +856,7 @@ function renderWall(list){
       if (link) { const a = document.createElement("a"); a.href = link; a.target = "_blank"; a.rel = "noopener"; a.textContent = b.song; s.appendChild(a); }
       else s.append(b.song);
       n.appendChild(s);
+      if (b.why) { const w = document.createElement("div"); w.className = "why"; w.textContent = "「" + b.why + "」"; n.appendChild(w); }
     }
     const f = document.createElement("div"); f.className = "from"; f.textContent = "— " + b.name; n.appendChild(f);
     wall.appendChild(n);
@@ -868,7 +885,7 @@ bindForm("rsvpForm", "rsvpMsg", "rsvp", "收到了，謝謝你！1/15 見 ♡");
 bindForm("blessForm", "blessMsg", "blessing", "祝福貼上了，謝謝你 ♡", data => {
   if (DEMO) { refreshWall(); return; }
   const before = $("wall").children.length;
-  const mine = { name:data.name, message:data.message, song:data.song, link:data.link };
+  const mine = { name:data.name, message:data.message, song:data.song, link:data.link, why:data.why };
   loadBlessings().then(l => renderWall(l.length > before ? l : [mine, ...l])).catch(() => {});
 });
 </script>
