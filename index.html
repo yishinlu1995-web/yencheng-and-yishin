@@ -859,6 +859,7 @@ if (CONFIG.heroPhoto) {
 }
 
 function tick(){
+  if (!$("countdown")) return;
   let ms = EVENT_TIME - Date.now();
   if (ms <= 0) { $("countdown").innerHTML = '<div><b>today!</b></div>'; return; }
   const d = Math.floor(ms/864e5); ms -= d*864e5;
