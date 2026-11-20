@@ -808,13 +808,8 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
 
 
 <section id="notes">
-  <div class="wrap center">
-    <svg class="sec-icon"><use href="#ic-pencil"/></svg>
-    <button class="big-note-btn" id="openNote" type="button"><span class="marker">leave us a note</span><span class="zh-l">點擊寫下祝福的話 ♡</span></button>
-  </div>
-  <dialog class="note-dialog" id="noteDialog" aria-label="寫下祝福">
-    <button class="dlg-close" type="button" id="closeNote" aria-label="關閉">×</button>
-    <div class="sec-title" style="margin-bottom:18px"><h2 class="marker">leave us a note</h2><span class="zh">留下祝福</span></div>
+  <div class="wrap">
+    <div class="sec-title"><svg class="sec-icon"><use href="#ic-pencil"/></svg><h2 class="marker">leave us a note</h2><span class="zh">寫下想對我們說的話 ♡</span></div>
     <form class="notepaper" id="blessForm">
       <label for="bName">署名</label>
       <input type="text" id="bName" name="name" required maxlength="40" placeholder="你的名字或暱稱">
@@ -822,14 +817,14 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
       <label for="bMsg">祝福的話</label>
       <textarea id="bMsg" name="message" required maxlength="600" placeholder="write us something…"></textarea>
 
-      <p class="collab-hint">想送我們一首歌嗎？<a href="#playlist" id="toPlaylist">到祝福歌單，直接把歌加進去 ↓</a></p>
+      <p class="collab-hint">想送我們一首歌嗎？<a href="#playlist">到祝福歌單，直接把歌加進去 ↓</a></p>
 
       <div class="submit-row">
         <button class="btn-ink" type="submit">貼上祝福</button>
         <span class="msg" id="blessMsg" role="status"></span>
       </div>
     </form>
-  </dialog>
+  </div>
 </section>
 
 <section id="love">
@@ -911,7 +906,6 @@ footer p{font-family:var(--script);font-size:22px;color:var(--ink-soft);margin-t
 </section>
 
 <footer>
-  <figure class="polaroid foot-photo"><div class="tape"></div><img src="../photos/silhouette.jpg" width="739" height="1100" alt="" loading="lazy"><figcaption>to the next adventure</figcaption></figure>
   <svg class="cheers"><use href="#ic-cheers"/></svg>
   <div class="marker">thank you ♡</div>
   <p id="footNames">Yencheng &amp; Yishin</p>
@@ -1264,16 +1258,10 @@ function bindForm(formId, msgId, type, okText, after){
   });
 }
 noWidows(document);
-const dlg = $("noteDialog");
-if (dlg) {
-  $("openNote").addEventListener("click", () => { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); });
-  $("closeNote").addEventListener("click", () => dlg.close ? dlg.close() : dlg.removeAttribute("open"));
-  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-  $("toPlaylist").addEventListener("click", () => dlg.close());
-}
+const dlg = null;
 bindForm("rsvpForm", "rsvpMsg", "rsvp", "收到了，謝謝你！1/15 見 ♡");
 bindForm("blessForm", "blessMsg", "blessing", "祝福貼上了，謝謝你 ♡", data => {
-  setTimeout(() => { if (dlg && dlg.open) dlg.close(); $("love").scrollIntoView({behavior:"smooth"}); }, 900);
+  setTimeout(() => $("love").scrollIntoView({behavior:"smooth"}), 900);
   if (DEMO) { refreshWall(); return; }
   const before = $("wall").children.length;
   const mine = { name:data.name, message:data.message, song:data.song, link:data.link, why:data.why };
